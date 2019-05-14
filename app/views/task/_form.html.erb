@@ -1,4 +1,6 @@
 <%= form_for task do |f| %>
+  <%= f.hidden_field :author_id %>
+
   <%= f.label "Title" %>
   <%= f.text_field :title %>
   <%= f.label "Content" %>

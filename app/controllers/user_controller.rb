@@ -3,5 +3,6 @@ class UserController < ApplicationController
     end 
 
     def home 
+        byebug
     end 
 end 

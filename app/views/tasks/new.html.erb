@@ -1,15 +1,4 @@
 <h1> New Task </h1>
 
-<%= form_for :task, url: user_tasks_path do |f| %> 
-  <p> 
-    <%= f.label :title %> <br>
-    <%= f.text_field :title %> 
-    <br>
-    <%= f.label :content %> <br>
-    <%= f.text_field :content %> <br>
-  
-  <%= f.submit %> 
-  </p>
-  <% end %> 
+<%= render partial: "form" %>
 
-#create a form that redirects to user/id/task/id 

@@ -1,11 +1,11 @@
-<%= form_for(model: [@task, status], local: true) do |f| %> 
+<%= form_for :task, url: user_tasks_path do |f| %> 
   <p> 
     <%= f.label :title %> <br>
     <%= f.text_field :title %> 
+    <br>
     <%= f.label :content %> <br>
-    <%= f.text_field :content %> 
+    <%= f.text_field :content %> <br>
   
   <%= f.submit %> 
-
   </p>
-  <%= end %> 
+  <% end %> 

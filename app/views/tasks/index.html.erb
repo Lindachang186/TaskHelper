@@ -1,0 +1,12 @@
+<h1> My Tasks </h1> 
+
+<% @tasks.each do |t| %> 
+
+<ol> 
+<li>
+<p>Task Title <br>
+ <%= t.title %> </p>
+<p>Task Details: <%= t.content %> </p>
+</li>
+</ol>
+<% end %> 

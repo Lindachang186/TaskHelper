@@ -10,7 +10,10 @@ class UsersController < ApplicationController
     end 
 
     def create 
-        User.create(user_params)
+        raise params.inspect
+        @user = User.create(user_params)
+        @user.save 
+        redirect_to  
     end 
 
     def show

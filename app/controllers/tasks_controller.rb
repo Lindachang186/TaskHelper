@@ -23,8 +23,8 @@ class TasksController < ApplicationController
     end 
 
     def create
-      task = Task.create(post_params)
-      redirect_to task
+      @task = Task.create(post_params)
+      redirect_to @task
     end 
     
     private

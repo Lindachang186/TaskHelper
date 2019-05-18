@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
    
       session[:user_id] = @user.id
    
-      render 'user/home'
+      render 'users/home'
     end
    
     private

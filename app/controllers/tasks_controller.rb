@@ -1,5 +1,6 @@
 class TasksController < ApplicationController 
   before_action :set_user, only: [:new, :show, :create, :edit, :update, :destroy]
+  before_action :require_login, only: [:index]
 
     def index 
         @tasks = Task.all
@@ -38,6 +39,10 @@ class TasksController < ApplicationController
  
   def post_params
     params.require(:task).permit(:title, :content, :user_id)
+  end
+
+  def require_login
+    return head(:forbidden) unless session.include? :user_id
   end
 
 end 

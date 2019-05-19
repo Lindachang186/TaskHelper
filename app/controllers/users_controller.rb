@@ -10,10 +10,9 @@ class UsersController < ApplicationController
     end 
 
     def create 
-        raise params.inspect
         @user = User.create(user_params)
         @user.save 
-        redirect_to  
+        render '/users/home'
     end 
 
     def show

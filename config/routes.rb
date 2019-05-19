@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get '/auth/facebook/callback' => 'sessions#create'
   get '/users/new' => 'users#new'
   
-  resources :users do 
+  resources :users, :only => [:create, :new] do 
     resources :tasks
   end 
 

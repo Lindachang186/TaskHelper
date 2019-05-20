@@ -2,15 +2,16 @@
 
   <p>Task Helper is a tool that will help you and your team get organized</p>
 
-<h3> <%= link_to "Sign Up", new_user_path %> </h3>
+  <p> Log in below: 
+  <%= render partial: "signin" %>
 
-<h3> Log in </h3> 
+  <h3> <%= link_to "Sign Up", new_user_path %> </h3>
 
-<% if session[:user_id] %>
-  <h1><%= @user.name %></h1>
-  <h2>Email: <%= @user.email %></h2>
-  <h2>Facebook UID: <%= @user.uid %></h2>
-  <img src="<%= @user.image %>">
-<% else %>
-  <h3> <%= link_to('Log in with Facebook!', '/auth/facebook') %> </h3> 
-<% end %>
+  <% if session[:user_id] %>
+    <h1><%= @user.name %></h1>
+    <h2>Email: <%= @user.email %></h2>
+    <h2>Facebook UID: <%= @user.uid %></h2>
+    <img src="<%= @user.image %>">
+  <% else %>
+    <h3> <%= link_to('Log in with Facebook!', '/auth/facebook') %> </h3> 
+  <% end %>

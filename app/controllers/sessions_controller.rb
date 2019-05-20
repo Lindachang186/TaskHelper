@@ -1,7 +1,9 @@
 class SessionsController < ApplicationController
 
+  def new 
+  end 
+
     def create
-      byebug
       if User.find_by(uid: auth[:uid])
         @user = User.find_or_create_by(uid: auth['uid']) do |u|
           u.name = auth['info']['name']
@@ -9,9 +11,9 @@ class SessionsController < ApplicationController
           u.image = auth['info']['image']
         end
         session[:user_id] = @user.id
-      else 
-        byebug
-      session[:user_id] = @user.id
+      elsif @user = User.find_by(name: params[:user][:name])
+        return head(:forbidden) unless @user.authenticate(params[:user][:password])
+        session[:user_id] = @user.id
    
       render '/users/home'
     end

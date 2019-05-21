@@ -13,6 +13,7 @@ class TasksController < ApplicationController
 
     def create 
       @task = Task.create(post_params)
+      redirect_to user_tasks
     end 
 
     def show 
@@ -25,6 +26,10 @@ class TasksController < ApplicationController
     def create
       @task = Task.create(post_params)
       redirect_to @task
+    end 
+
+    def destroy
+      redirect_to '/'
     end 
     
     private

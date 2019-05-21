@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-
+  before_action :redirect_if_not_logged_in, only: [:show, :home]
+  
     def new 
         @user = User.new
     end 
@@ -8,25 +9,31 @@ class UsersController < ApplicationController
     end 
 
     def home 
+      
     end 
 
     def create 
-        if @user = User.create(user_params)
-            user_params[:password] == user_params[:password_confirmation]
-            session[:user_id] = @user.id
-            render '/users/home'
-            else 
-              flash[:alert] = "Wrong USN or PW"
-              redirect_to new_user_path
-            end 
+      @user = User.create(user_params)
+
+      if @user.valid?
+          @user.save 
+          session[:user_id] = @user.id
+          render '/users/home'
+      else 
+        render '/users/signin'
+      end 
+
+
     end 
 
     def show
+      render '/users/home'
     end 
 
     private 
 
     def user_params
-        params.require(:user).permit(:name, :password, :password_confirmation)
-      end
+      params.require(:user).permit(:name, :password, :password_confirmation)
+    end
+
 end 
